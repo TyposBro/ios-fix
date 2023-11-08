@@ -44,12 +44,12 @@
           }
           // Remove events
           document.removeEventListener("touchstart", fixAudioContext);
-          document.removeEventListener("touchend", fixAudioContext);
+          document.removeEventListener("touchend", () => window.audioContext.resume());
         };
         // iOS 6-8
         document.addEventListener("touchstart", fixAudioContext);
         // iOS 9
-        document.addEventListener("touchend", fixAudioContext);
+        document.addEventListener("touchend", () => window.audioContext.resume());
       })();
 
       var $status = document.querySelector("#status");
